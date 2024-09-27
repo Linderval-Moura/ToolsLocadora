@@ -1,4 +1,6 @@
-package ToolsLocadora;
+package ToolsLocadora.Strategy;
+
+import ToolsLocadora.Ferramenta;
 
 public class LongoPrazoStrategy implements PrecoStrategy {
 

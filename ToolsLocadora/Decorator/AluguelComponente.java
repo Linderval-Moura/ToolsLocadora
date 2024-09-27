@@ -1,10 +1,16 @@
-package ToolsLocadora;
+package ToolsLocadora.Decorator;
 
-public class Aluguel {
+import ToolsLocadora.Ferramenta;
+
+/*
+ * Classe Componente para implementar o padrão Decorator
+ */
+public class AluguelComponente {
+	
 	protected Ferramenta ferramenta;
     protected int dias;
 
-    public Aluguel(Ferramenta ferramenta, int dias) {
+    public AluguelComponente(Ferramenta ferramenta, int dias) {
         this.ferramenta = ferramenta;
         this.dias = dias;
     }

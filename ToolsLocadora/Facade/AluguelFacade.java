@@ -1,4 +1,7 @@
-package ToolsLocadora;
+package ToolsLocadora.Facade;
+
+import ToolsLocadora.Ferramenta;
+import ToolsLocadora.Strategy.PrecoStrategy;
 
 public class AluguelFacade {
 	private PrecoStrategy strategy;
