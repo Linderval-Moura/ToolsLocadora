@@ -2,6 +2,9 @@ package ToolsLocadora.Strategy;
 
 import ToolsLocadora.Ferramenta;
 
+/*
+ * Classe para implementar o padrão Strategy
+ */
 public class LongoPrazoStrategy implements PrecoStrategy {
 
     @Override
@@ -11,5 +14,4 @@ public class LongoPrazoStrategy implements PrecoStrategy {
         }
         return ferramenta.getPrecoPorDia() * dias;
     }
-
 }

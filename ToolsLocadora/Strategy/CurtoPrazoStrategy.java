@@ -2,6 +2,9 @@ package ToolsLocadora.Strategy;
 
 import ToolsLocadora.Ferramenta;
 
+/*
+ * Classe para implementar o padrão Strategy
+ */
 public class CurtoPrazoStrategy implements PrecoStrategy {
 
     @Override
