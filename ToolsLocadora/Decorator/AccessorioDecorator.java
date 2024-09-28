@@ -12,6 +12,6 @@ public class AccessorioDecorator extends AluguelDecorator{
 
     @Override
     public String getDescricao() {
-        return aluguelComponente.getDescricao() + " + Accessorio";
+        return aluguelComponente.getDescricao() + " + Accessórios";
     }
 }

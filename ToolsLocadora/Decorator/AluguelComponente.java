@@ -1,9 +1,11 @@
 package ToolsLocadora.Decorator;
 
 import ToolsLocadora.Ferramenta;
+import ToolsLocadora.Memento.AluguelMemento;
 
 /*
  * Classe Componente para implementar o padrão Decorator
+ * E também classe Originador do padrão Memento
  */
 public class AluguelComponente {
 	
@@ -20,6 +22,14 @@ public class AluguelComponente {
     }
 
     public String getDescricao() {
-        return "Aluguel de: " + ferramenta.getNome() + " de " + dias + " dias";
+        return "Aluguel de: " + ferramenta.getNome() + " por " + dias + " dias";
+    }
+    
+    public AluguelMemento salvarEstado() {
+        return new AluguelMemento(ferramenta.getNome(), dias, getCusto());
+    }
+    
+    public void restaurarEstado(AluguelMemento memento) {
+        this.dias = memento.getDias();
     }
 }

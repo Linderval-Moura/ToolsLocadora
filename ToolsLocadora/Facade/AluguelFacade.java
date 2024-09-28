@@ -5,19 +5,27 @@ import ToolsLocadora.Decorator.AluguelComponente;
 import ToolsLocadora.Decorator.SeguroDecorator;
 import ToolsLocadora.Decorator.AccessorioDecorator;
 import ToolsLocadora.Memento.SalvaAluguel;
+import ToolsLocadora.Memento.AluguelMemento;
 import ToolsLocadora.Strategy.PrecoStrategy;
 
 public class AluguelFacade {
 	
     private PrecoStrategy strategy;
-    private SalvaAluguel memento;
+    private SalvaAluguel salvaAluguel;
 
     public AluguelFacade(PrecoStrategy strategy) {
         this.strategy = strategy;
-        this.memento = new SalvaAluguel();
+        this.salvaAluguel = new SalvaAluguel();
+    }
+    
+    // Cria uma Ferramenta
+    public Ferramenta criarFerramenta(String nome, double precoPorDia) {
+        Ferramenta ferramenta = new Ferramenta(nome, precoPorDia);
+        System.out.println("Ferramenta criada: " + nome + " -> Preço por dia: R$" + precoPorDia);
+        return ferramenta;
     }
 
-    // Método para criar um aluguel
+    // Cria um Aluguel
     public AluguelComponente criarAluguel(Ferramenta ferramenta, int dias) {
         AluguelComponente aluguel = new AluguelComponente(ferramenta, dias);
         System.out.println(aluguel.getDescricao() + " -> Custo: R$" + aluguel.getCusto());
@@ -37,22 +45,25 @@ public class AluguelFacade {
         System.out.println(aluguel.getDescricao() + " -> Custo: R$" + aluguel.getCusto());
         return aluguel;
     }
-
+    
     // Método para salvar o estado do aluguel
     public void salvarEstado(AluguelComponente aluguel) {
-        memento.salvarEstado(aluguel);
+        AluguelMemento memento = aluguel.salvarEstado();
+        salvaAluguel.salvarEstado(memento);
         System.out.println("Estado do aluguel salvo.");
     }
-
+    
     // Método para restaurar o estado do aluguel
-    public AluguelComponente restaurarEstado() {
-        AluguelComponente estadoRestaurado = memento.restaurarEstado();
-        System.out.println(
-        		"Estado restaurado: " 
-        		+ estadoRestaurado.getDescricao()
-        		+ " -> Custo: R$" + estadoRestaurado.getCusto()
-        		);
-        return estadoRestaurado;
+    public void restaurarEstado(AluguelComponente aluguel) {
+        AluguelMemento memento = salvaAluguel.restaurarEstado();
+        if (memento != null) {
+            aluguel.restaurarEstado(memento);
+            System.out.println(
+            		"Estado restaurado: " 
+            		+ aluguel.getDescricao() 
+            		+ " -> Custo: R$" + aluguel.getCusto()
+            		);
+        }
     }
 
     // Método para calcular o preço usando o Strategy

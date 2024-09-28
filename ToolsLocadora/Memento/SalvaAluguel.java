@@ -1,15 +1,25 @@
 package ToolsLocadora.Memento;
 
-import ToolsLocadora.Decorator.AluguelComponente;
+import java.util.Stack;
 
+/*
+ * Classe Componente para implementar o padrão Decorator
+ * E também classe Originador do padrão Memento
+ */
 public class SalvaAluguel {
-	private AluguelMemento memento;
+	
+    private Stack<AluguelMemento> mementos = new Stack<>();
 
-    public void salvarEstado(AluguelComponente aluguelComponente) {
-        this.memento = new AluguelMemento(aluguelComponente);
+    public void salvarEstado(AluguelMemento memento) {
+        mementos.push(memento);
     }
 
-    public AluguelComponente restaurarEstado() {
-        return memento.getSavedRental();
+    public AluguelMemento restaurarEstado() {
+        if (!mementos.isEmpty()) {
+            return mementos.pop();
+        } else {
+            System.out.println("Nenhum estado salvo.");
+            return null;
+        }
     }
 }
