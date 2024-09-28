@@ -1,8 +1,8 @@
 package ToolsLocadora.Memento;
 
 /*
- * Classe AluguelMemento para implementar o padrão Memento
- * Ela salva o estado da classe organizador
+ * Classe para implementar o padrão Memento
+ * Salva o estado da classe organizador
  */
 public class AluguelMemento {
 	

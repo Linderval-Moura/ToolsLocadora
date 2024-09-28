@@ -3,5 +3,5 @@ package ToolsLocadora.Strategy;
 import ToolsLocadora.Ferramenta;
 
 public interface PrecoStrategy {
-	double calculatePrice(Ferramenta ferramenta, int dias);
+	double calculaPreco(Ferramenta ferramenta, int dias);
 }

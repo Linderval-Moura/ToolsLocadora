@@ -1,6 +1,7 @@
 package ToolsLocadora.Decorator;
 
 public class AccessorioDecorator extends AluguelDecorator{
+	
 	public AccessorioDecorator(AluguelComponente aluguelComponente) {
         super(aluguelComponente);
     }

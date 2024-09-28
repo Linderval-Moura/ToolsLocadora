@@ -2,8 +2,7 @@ package ToolsLocadora;
 
 import ToolsLocadora.Decorator.AluguelComponente;
 import ToolsLocadora.Facade.AluguelFacade;
-import ToolsLocadora.Strategy.CurtoPrazoStrategy;
-import ToolsLocadora.Strategy.LongoPrazoStrategy;
+import ToolsLocadora.Strategy.TipoPrazo;
 
 public class ToolsLocadoraApp {
 
@@ -12,7 +11,7 @@ public class ToolsLocadoraApp {
         System.out.println("# Aluguel Furadeira #");
         
         // Usando a fachada com estratégia de curto prazo
-        AluguelFacade aluguelFacade = new AluguelFacade(new CurtoPrazoStrategy());
+        AluguelFacade aluguelFacade = new AluguelFacade(TipoPrazo.CURTO_PRAZO);
         
         // Criando ferramenta através da fachada
         Ferramenta furadeira = aluguelFacade.criarFerramenta("Furadeira", 20.0);
@@ -38,7 +37,7 @@ public class ToolsLocadoraApp {
         System.out.println("Custo total (Curto prazo) por 8 dias, sem desconto: R$" + custoTotal);
         
         // Usando estratégia de preços para longo prazo
-        AluguelFacade aluguelFacadeLongoPrazo = new AluguelFacade(new LongoPrazoStrategy());
+        AluguelFacade aluguelFacadeLongoPrazo = new AluguelFacade(TipoPrazo.LONGO_PRAZO);
         double custoTotalLongoPrazo = aluguelFacadeLongoPrazo.calcularPreco(furadeira, 10);
         System.out.println("Custo total (Longo prazo) por 8 dias com 10% de desconto: R$" + custoTotalLongoPrazo);
     }

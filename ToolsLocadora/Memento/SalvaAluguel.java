@@ -3,8 +3,8 @@ package ToolsLocadora.Memento;
 import java.util.Stack;
 
 /*
- * Classe Componente para implementar o padrão Decorator
- * E também classe Originador do padrão Memento
+ * Classe Caretaker (Zelador) para implementar o padrão Memento
+ * controla quando salvar e restaurar o estado.
  */
 public class SalvaAluguel {
 	

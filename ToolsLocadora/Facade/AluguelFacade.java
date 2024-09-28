@@ -7,14 +7,15 @@ import ToolsLocadora.Decorator.AccessorioDecorator;
 import ToolsLocadora.Memento.SalvaAluguel;
 import ToolsLocadora.Memento.AluguelMemento;
 import ToolsLocadora.Strategy.PrecoStrategy;
+import ToolsLocadora.Strategy.TipoPrazo;
 
 public class AluguelFacade {
 	
-    private PrecoStrategy strategy;
+	private PrecoStrategy strategy;
     private SalvaAluguel salvaAluguel;
 
-    public AluguelFacade(PrecoStrategy strategy) {
-        this.strategy = strategy;
+    public AluguelFacade(TipoPrazo tipoPrazo) {
+        this.strategy = tipoPrazo.getStrategy();
         this.salvaAluguel = new SalvaAluguel();
     }
     
@@ -66,8 +67,13 @@ public class AluguelFacade {
         }
     }
 
-    // Método para calcular o preço usando o Strategy
+    // Seleciona tipo do prazo
+    public void setTipoPreco(TipoPrazo tipoPrazo) {
+        this.strategy = tipoPrazo.getStrategy();
+    }
+    
+    // Calcula preço usando o Strategy
     public double calcularPreco(Ferramenta ferramenta, int dias) {
-        return strategy.calculatePrice(ferramenta, dias);
+        return strategy.calculaPreco(ferramenta, dias);
     }
 }
